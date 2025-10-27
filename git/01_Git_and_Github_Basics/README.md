@@ -1,6 +1,7 @@
-# Week 4: Git and GitHub Challenge
+# Git and GitHub
 
-Welcome to the Week 4 Challenge! In this task you will practice the essential Git and GitHub commands and concepts taught by Shubham Bhaiya. This includes:
+Welcome to the Challenge! In this task you will practice the essential Git and GitHub commands and concepts. 
+This includes:
 
 - **Git Basics:** `git init`, `git add`, `git commit`
 - **Repository Management:** `git clone`, forking a repository, and understanding how a GitHub repo is made
@@ -8,7 +9,7 @@ Welcome to the Week 4 Challenge! In this task you will practice the essential Gi
 - **Authentication:** Pushing and pulling using a Personal Access Token (PAT)
 - **Critical Thinking:** Explaining why branching strategies are important in collaborative development
 
-To make this challenge more difficult, additional steps have been added. You will also be required to explore SSH authentication as a bonus task. Complete all the tasks and document every step in `solution.md`. Finally, share your experience on LinkedIn (details provided at the end).
+To make this challenge more difficult, additional steps have been added. You will also be required to explore SSH authentication as a bonus task. Complete all the tasks and document every step in `solution.md`.
 
 ---
 
@@ -34,8 +35,8 @@ To make this challenge more difficult, additional steps have been added. You wil
 1. **Set Up Your Challenge Directory:**  
    - Inside the cloned repository, create a new directory for this challenge:
      ```bash
-     mkdir week-4-challenge
-     cd week-4-challenge
+     mkdir challenge
+     cd challenge
      ```
 
 2. **Initialize a Git Repository:**  
@@ -69,11 +70,11 @@ To make this challenge more difficult, additional steps have been added. You wil
    Replace `<your-username>`, `<your-PAT>`, and `<repository-name>` with your actual GitHub username, your PAT, and the repository name respectively:
    
    ```bash
-   git remote add origin https://<your-username>:<your-PAT>@github.com/<your-username>/90DaysOfDevOps.git
+   git remote add origin https://<your-username>:<your-PAT>@github.com/<your-username>/DevOps-Challange.git
    ```
    If a remote named `origin` already exists, update it with:
    ```bash
-   git remote set-url origin https://<your-username>:<your-PAT>@github.com/<your-username>/90DaysOfDevOps.git
+   git remote set-url origin https://<your-username>:<your-PAT>@github.com/<your-username>/DevOps-Challange.git
    ```
 2. **Push Your Commit to Remote:**  
    - Push your current branch (typically `main`) and set the upstream:
@@ -158,7 +159,7 @@ To make this challenge more difficult, additional steps have been added. You wil
 3. **Switch Your Remote URL to SSH:**  
    - Change the remote URL from HTTPS to SSH:
      ```bash
-     git remote set-url origin git@github.com:<your-username>/90DaysOfDevOps.git
+     git remote set-url origin git@github.com:<your-username>/DevOps-Challange.git
      ```
 
 4. **Push Your Branch Using SSH:**  
@@ -178,14 +179,14 @@ To make this challenge more difficult, additional steps have been added. You wil
    - Open a PR from your branch to the main repository.
    - Use a clear title such as:
      ```
-     Week 4 Challenge - DevOps Batch 9: Git & GitHub Advanced Challenge
+     Challenge - Git & GitHub Advanced Challenge
      ```
    - In the PR description, summarize your process and list the Git commands you used.
 
 3. **Share Your Experience on LinkedIn:**  
-   - Write a LinkedIn post summarizing your Week 4 experience.
+   - Write a LinkedIn post summarizing your experience.
    - Include screenshots or logs of your tasks.
-   - Use hashtags: **#90DaysOfDevOps #GitGithub #DevOps**
+   - Use hashtags: **#DevOps-Challange #GitGithub #DevOps**
    - Optionally, share any blog posts, GitHub repos, or articles you create about this challenge.
 
 ---

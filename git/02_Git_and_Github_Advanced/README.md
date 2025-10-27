@@ -1,4 +1,4 @@
-# Week 4: Git & GitHub Advanced Challenge 
+# Git & GitHub Advanced Challenge 
 
 This challenge covers advanced Git concepts essential for real-world DevOps workflows. By the end of this challenge, you will:  
 
@@ -191,7 +191,7 @@ This challenge covers advanced Git concepts essential for real-world DevOps work
    - In your post, include:
      - A brief description of the challenge and what you learned.
      - Screenshots or excerpts from your `solution.md` that highlight key steps or interesting findings.
-     - The hashtags: **#90DaysOfDevOps #Git #GitHub #VersionControl #DevOps**
+     - The hashtags: **#DevOps-Challange #Git #GitHub #VersionControl #DevOps**
      - Optionally, links to any blog posts or related GitHub repositories that further explain your journey.
      
 ---
