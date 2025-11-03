@@ -1,7 +1,5 @@
 # Week 5: Docker Basics & Advanced Challenge
 
-Welcome to the Week 5 Docker Challenge! In this task, you will work with Docker concepts and tools taught by Shubham Bhaiya. This challenge covers the following topics:
-
 - **Introduction and Purpose:** Understand Docker’s role in modern development.
 - **Virtualization vs. Containerization:** Learn the differences and benefits.
 - **Build Kya Hota Hai:** Understand the Docker build process.
@@ -221,7 +219,7 @@ Complete all the tasks below and document your steps, commands, and observations
 
 ---
 
-## Additional Resources
+## Additional Resource
 
 - **[Docker Documentation](https://docs.docker.com/)**  
 - **[Docker Hub](https://docs.docker.com/docker-hub/)**  
