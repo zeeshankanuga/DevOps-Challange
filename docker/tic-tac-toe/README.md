@@ -8,7 +8,7 @@ pip install flask==3.0.3    # Install your package within the virtual environmen
 deactivate                  # Deactivate the virtual environment when done
 
 ---
-
+```
 ## 📁 Project Structure
 tic-tac-toe/
 ├── app.py
@@ -19,3 +19,4 @@ tic-tac-toe/
 ├── requirements.txt
 ├── Dockerfile
 └── README.md
+```
