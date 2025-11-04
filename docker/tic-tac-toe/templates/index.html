@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <div id="board"></div>
+    <h2 id="status"></h2>
+
+    <script>
+        const board = document.getElementById('board');
+        const status = document.getElementById('status');
+        let cells = [];
+
+        function createBoard() {
+            board.innerHTML = '';
+            for (let i = 0; i < 9; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'cell';
+                cell.addEventListener('click', () => makeMove(i));
+                board.appendChild(cell);
+                cells.push(cell);
+            }
+        }
+
+        async function makeMove(index) {
+            const res = await fetch('/move', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ index })
+            });
+            const data = await res.json();
+            if (data.error) return alert(data.error);
+            updateBoard(data.board);
+            if (data.winner) {
+                status.innerText = data.winner === "Draw" ? "It's a Draw!" : `${data.winner} Wins!`;
+                setTimeout(() => {
+                    status.innerText = '';
+                    updateBoard(Array(9).fill(""));
+                }, 2000);
+            }
+        }
+
+        function updateBoard(state) {
+            for (let i = 0; i < 9; i++) {
+                cells[i].innerText = state[i];
+            }
+        }
+
+        createBoard();
+    </script>
+</body>
+</html>
+
