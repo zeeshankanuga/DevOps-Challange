@@ -1,4 +1,4 @@
-# Week 5: Docker Basics & Advanced Challenge
+# Docker Basics & Advanced Challenge
 
 - **Introduction and Purpose:** Understand Docker’s role in modern development.
 - **Virtualization vs. Containerization:** Learn the differences and benefits.
