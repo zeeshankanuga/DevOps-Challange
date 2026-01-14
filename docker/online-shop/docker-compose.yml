@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+
+  onlineshop:
+    build:
+      context: .
+
+    container_name: onlineshop
+
+    ports:
+      - "80:80"
+
+    restart: always
+
+    networks:      # Service-level (Plural)
+      - my-net
+
+networks:          # Top-level (Plural)
+  my-net:
+    driver: bridge
