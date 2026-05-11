@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: bankapp-statefulset
+  namespace: bankapp-ns
+  labels:
+    app: bankapp
+spec:
+  serviceName: "bankapp-service"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bankapp
+  template:
+    metadata:
+      labels:
+        app: bankapp
+    spec:
+      containers:
+      - name: bankapp-container
+        image: zeeshankanuga/bankapp:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 8080
+  volumeClaimTemplates:
+  - metadata:
+      name: bankapp-pvc
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi

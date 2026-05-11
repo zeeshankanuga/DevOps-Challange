@@ -50,3 +50,25 @@ kind : Namespace
 metadata:
   name: nginx-ns
 ```
+
+### Deployment:
+it is used when we need to maintain rolling update of the application.
+Example: Let's say we have an application with multiple versions, and we want to roll out a new version while keeping the previous one available in case something goes wrong. We can use a deployment YAML file like this:
+
+### StatefulSet:
+Imagine you're running a database application where data needs to be persisted even when pods restart or get deleted. A StatefulSet is like a pod, but it guarantees that each replica has a unique identity and that the replicas maintain their state.
+
+Let's say we have a WordPress application with 3 pods, named `wp-0`, `wp-1`, and `wp-2`. The StatefulSet will ensure that:
+
+* Each pod has its own persistent storage (e.g., an SSD) where data is stored.
+* When a pod restarts or gets deleted, it can be replaced by a new one with the same name and identical configuration.
+* The pods are scaled up or down as needed.
+
+### DaemonSets
+A DaemonSet is used when you need to run a container on every node in your cluster. This is useful for applications that require a service to be running on each node, such as:
+
+* Logging agents (e.g., Fluentd)
+* Monitoring agents (e.g., Prometheus)
+* File system backup tools
+
+For example, let's say we have an application that requires a logging agent to run on every node. We can use a DaemonSet YAML file like this:
