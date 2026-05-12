@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: service
+metadata:
+  name: mysql-service
+  namespace: bankapp-ns
+  labels:
+    app: mysql
+spec:
+  selector:
+    app: mysql
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+  type: NodePort
