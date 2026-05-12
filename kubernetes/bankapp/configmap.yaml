@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: ConfigMap
+metadata:
+  name: bankapp-configmap
+  namespace: bankapp-ns
+  labels:
+    app: bankapp
+data:
+  datasource-url: "jdbc:mysql://mysql-service.bankapp-ns.svc.cluster.local:3306/BankDB"
+  datasource-username: "root"
+  mysql-database: "BankDB"
