@@ -72,3 +72,5 @@ A DaemonSet is used when you need to run a container on every node in your clust
 * File system backup tools
 
 For example, let's say we have an application that requires a logging agent to run on every node. We can use a DaemonSet YAML file like this:
+
+

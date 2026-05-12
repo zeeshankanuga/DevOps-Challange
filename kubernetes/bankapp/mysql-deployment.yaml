@@ -20,22 +20,23 @@ spec:
         image: mysql:latest
         env:
         - name: MYSQL_ROOT_PASSWORD
-          valuefrom:
+          valueFrom:
             secretKeyRef:
-              name: mysql-secret
+              name: bankapp-db-secret
               key: mysql-root-password
 
 
         - name: MYSQL_DATABASE
-          valuefrom:
+          valueFrom:
             configMapKeyRef:
               name: mysql-configmap
               key: mysql-database
 
         resources:
          limits:
-         memory: "128Mi"
-         cpu: "500m"
+          memory: "128Mi"
+          cpu: "500m"
+
         ports:
         - containerPort: 3306 
 
