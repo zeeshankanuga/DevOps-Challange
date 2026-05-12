@@ -19,19 +19,18 @@ spec:
       - name: bankapp-container
         image: zeeshankanuga/bankapp:latest
 
-
         env:
           - name: SPRING_DATASOURCE_URL
-            valuefrom:
-            configMapKeyRef:
-              name: bankapp-configmap
-              key: datasource-url
+            valueFrom:
+              configMapKeyRef:
+                name: bankapp-configmap
+                key: datasource-url
           - name: SPRING_DATASOURCE_USERNAME
-            valuefrom:
+            valueFrom:
               configMapKeyRef:
                 name: bankapp-configmap
                 key: datasource-username
-          - name: MYSQL_DATABASE
+          - name: SPRING_MYSQL_DATABASE
             valueFrom:
               configMapKeyRef:
                 name: bankapp-configmap
@@ -42,7 +41,6 @@ spec:
               secretKeyRef:
                 name: bankapp-db-secret
                 key: db-password
-
         resources:
           limits:
             memory: "128Mi"
