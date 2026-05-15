@@ -1,0 +1,190 @@
+    1  vim install.sh
+    2  sh install.sh
+    3  docker ps
+    4  sudo reboot
+    5  ls
+    6  vim kind-config.yaml
+    7  ls
+    8  kind create cluster --config kind-config.yaml --name kind-clster
+    9  docker ps
+   10  ls
+   11  kind create cluster --config kind-config.yaml --name kind-cluster
+   12  docker ps
+   13  kind delete cluster --name kind-config.yaml
+   14  ls
+   15  docker ps
+   16  kind delete cluster
+   17  kind get clusters
+   18  docker ps
+   19  kind delete cluster --name kind-clster
+   20  docker ps
+   21  kubectl get nods
+   22  kubectl get nodes
+   23  kubectl get nodes -o wide
+   24  kind get clusters
+   25  kind delete cluster --name kind-cluster
+   26  docker ps
+   27  ls
+   28  kind create cluster --config kind-config.yaml --name kind-cluster
+   29  docker ps
+   30  kubectl get nodes
+   31  ls
+   32  git clone https://github.com/zeeshankanuga/DevOps-Challange.git
+   33  ls
+   34  cd DevOps-Challange/kubernetes/
+   35  ls
+   36  cd mysql/
+   37  ls
+   38  kubectl apply -f namespace.yaml
+   39  kubectl get ns
+   40  kubectl get pv -n mysql-ns
+   41  cat pv.yaml
+   42  docker ps
+   43  docker exec -it kind-cluster-worker bash
+   44  ls
+   45  cat pvc.yaml
+   46  vim pv.yaml
+   47  cat pvc.yaml
+   48  ls
+   49  kubectl apply -f configmap.yaml -n mysql-ns
+   50  kubectl apply -f secret.yaml -n mysql-ns
+   51  kubectl apply -f pv.yaml
+   52  kubectl get pv
+   53  kubectl apply -f pvc.yaml -n mysql-ns
+   54  kubectl get pvc
+   55  kubectl get pvc -n mysql-ns
+   56  kubectl get pvc
+   57  kubectl get pv
+   58  cat deployment.yaml
+   59  ls
+   60  kubectl apply -f deployment.yaml -n mysql-ns
+   61  kubectl apply -f service.yaml -n mysql-ns
+   62  kubectl get pods -n mysql-ns
+   63  kubectl exec -it mysql-deployment-5989dfb8f-mnj9g -n mysql-ns --bash
+   64  kubectl exec -it mysql-deployment-5989dfb8f-mnj9g -n mysql-ns -- bash
+   65  docker ps
+   66  docker exec -it kind-cluster-worker bash
+   67  docker exec -it kind-cluster-worker2 bash
+   68  ls
+   69  vim deployment.yaml
+   70  kubectl apply -f deployment.yaml -n mysql-ns
+   71  kubectl get pod -n mysql-ns
+   72  kubectl exec -it mysql-deployment-5989dfb8f-pggr6 -n mysql-ns -- bash
+   73  vim deployment.yaml
+   74  kubectl apply -f deployment.yaml -n mysql-ns
+   75  kubectl get pod -n mysql-ns
+   76  kubectl exec -it mysql-deployment-5989dfb8f-mnj9g -n mysql-ns -- bash
+   77  ls
+   78  vim deployment.yaml
+   79  kubectl apply -f deployment.yaml -n mysql-ns
+   80  kubectl get pods -n mysql-ns
+   81  cat deployment.yaml
+   82  ls
+   83  docker ps
+   84  kubectl get nodes
+   85  cd DevOps-Challange/kubernetes/
+   86  ls
+   87  cd mysql/
+   88  ls
+   89  vim bankapp-deployment.yaml
+   90  cat configmap.yaml
+   91  vim bankapp-deployment.yaml
+   92  cat secret.yaml
+   93  vim bankapp-deployment.yaml
+   94  vim secret.yaml
+   95  vim bankapp-deployment.yaml
+   96  vim configmap.yaml
+   97  vim bankapp-deployment.yaml
+   98  vim configmap.yaml
+   99  ls
+  100  cat deployment.yaml
+  101  cat configmap.yaml
+  102  vim configmap.yaml
+  103  vim bankapp-deployment.yaml
+  104  cat configmap.yaml
+  105  vim bankapp-deployment.yaml
+  106  vim bankapp-svc.yaml
+  107  ls
+  108  cat bankapp-deployment.yaml
+  109  kubectl get all -n mysql-ns
+  110  kubectl apply -f bankapp-deployment.yaml -n mysql-ns
+  111  cat bankapp-deployment.yaml
+  112  cat configmap.yaml
+  113  vim bankapp-deployment.yaml
+  114  kubectl apply -f bankapp-deployment.yaml -n mysql-ns
+  115  kubectl get pods -n mysql-ns
+  116  kubectl apply -f bankapp-svc.yaml -n mysql-ns
+  117  kubectl get pods -n mysql-ns
+  118  kubectl logs bankapp-deployment-bf5f7b6-dp82r
+  119  kubectl logs bankapp-deployment-bf5f7b6-dp82r -n mysql-ns
+  120  kubectl describe pod bankapp-deployment-bf5f7b6-dp82r -n mysql-ns
+  121  cat configmap.yaml
+  122  cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-configmap
+  namespace: mysql-ns
+  labels:
+    app: mysql
+data:
+  MYSQL_DATABASE: "mysql-new-db"
+  SPRING_DATASOURCE_USERNAME: "root"
+  SPRING_DATASOURCE_URL: "jdbc:mysql://mysql-svc.mysql-ns.svc.cluster.local:3306/mysql-new-db"
+EOF
+
+  123  kubectl describe configmap mysql-configmap -n mysql-ns
+  124  kubectl rollout restart deployment bankapp-deployment -n mysql-ns
+  125  kubectl get pods -n mysql-ns -w
+  126  kubectl get pods -n mysql-ns
+  127  kubectl describe pod bankapp-deployment-54b4cd44bd-dh2x4 -n mysql-ns
+  128  cat secret.yaml
+  129  cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secret
+  namespace: mysql-ns
+type: Opaque
+data:
+  MYSQL_ROOT_PASSWORD: "cm9vdA==“
+  SPRING_DATASOURCE_PASSWORD: "cm9vdA==“
+EOF
+
+  130  cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secret
+  namespace: mysql-ns
+type: Opaque
+data:
+  MYSQL_ROOT_PASSWORD: "cm9vdA=="
+  SPRING_DATASOURCE_PASSWORD: "cm9vdA=="
+EOF
+
+  131  kubectl describe secret mysql-secret -n mysql-ns
+  132  kubectl rollout restart deployment bankapp-deployment -n mysql-ns
+  133  kubectl get pods -n mysql-ns
+  134  kubectl get pods -n mysql-ns
+  135  kubectl get svc -n mysql-ns
+  136  kubectl port-forward --address 0.0.0.0 svc/bankapp-svc 8080:8080 -n mysql-ns
+  137  kubectl logs deployment/bankapp-deployment -n mysql-ns --tail=100
+  138  kubectl get pods -n mysql-ns
+  139  kubectl logs bankapp-deployment-687d86f788-7k9zg -n mysql-ns --tail=100
+  140  kubectl logs bankapp-deployment-687d86f788-7k9zg -n mysql-ns
+  141  kubectl port-forward --address 0.0.0.0 pod/bankapp-deployment-687d86f788-7k9zg 8080:8080 -n mysql-ns
+  142  vim bankapp-deployment.yaml
+  143  vim bankapp-svc.yaml
+  144  cat bankapp-svc.yaml
+  145  cat bankapp-deployment.yaml
+  146  vim bankapp-deployment.yaml
+  147  kubectl apply -f . -n mysql-ns
+  148  cat bankapp-deployment.yaml
+  149  kubectl delete deployment bankapp-deployment -n mysql-ns
+  150  kubectl apply -f . -n mysql-ns
+  151  kubectl get ep bankapp-svc -n mysql-ns
+  152  kubectl get ep mysql-svc -n mysql-ns
+  153  kubectl port-forward --address 0.0.0.0 svc/bankapp-svc 8080:8080 -n mysql-ns
+  154  kubectl get pods -n mysql-ns
+  155  kubectl exec -it mysql-deployment-5989dfb8f-7xgpq -n mysql-ns -- bash
