@@ -33,10 +33,39 @@ spec:
               key: mysql-database
 
         resources:
-         limits:
-          memory: "128Mi"
-          cpu: "500m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
 
+        livenessProbe:
+          exec:
+            command:
+            - mysqladmin
+            - ping
+            - -h
+            - localhost
+          initialDelaySeconds: 30
+          periodSeconds: 10
+
+        readinessProbe:
+          exec:
+            command:
+            - mysqladmin
+            - ping
+            - -h
+            - localhost
+          initialDelaySeconds: 30
+          periodSeconds: 10
+
+        startupProbe:
+          exec:
+            command:
+            - mysqladmin
+            - ping
+            - -h
+            - localhost
+          initialDelaySeconds: 30
+          periodSeconds: 10
         ports:
         - containerPort: 3306 
 
