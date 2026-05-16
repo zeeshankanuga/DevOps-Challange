@@ -188,3 +188,487 @@ EOF
   153  kubectl port-forward --address 0.0.0.0 svc/bankapp-svc 8080:8080 -n mysql-ns
   154  kubectl get pods -n mysql-ns
   155  kubectl exec -it mysql-deployment-5989dfb8f-7xgpq -n mysql-ns -- bash
+
+
+
+
+
+
+============================================================
+
+
+
+    1  vim install.sh
+    2  sh install.sh
+    3  docker ps
+    4  sudo reboot
+    5  ls
+    6  vim kind-config.yaml
+    7  ls
+    8  kind create cluster --config kind-config.yaml --name kind-clster
+    9  docker ps
+   10  ls
+   11  kind create cluster --config kind-config.yaml --name kind-cluster
+   12  docker ps
+   13  kind delete cluster --name kind-config.yaml
+   14  ls
+   15  docker ps
+   16  kind delete cluster
+   17  kind get clusters
+   18  docker ps
+   19  kind delete cluster --name kind-clster
+   20  docker ps
+   21  kubectl get nods
+   22  kubectl get nodes
+   23  kubectl get nodes -o wide
+   24  kind get clusters
+   25  kind delete cluster --name kind-cluster
+   26  docker ps
+   27  ls
+   28  kind create cluster --config kind-config.yaml --name kind-cluster
+   29  docker ps
+   30  kubectl get nodes
+   31  ls
+   32  git clone https://github.com/zeeshankanuga/DevOps-Challange.git
+   33  ls
+   34  cd DevOps-Challange/kubernetes/
+   35  ls
+   36  cd mysql/
+   37  ls
+   38  kubectl apply -f namespace.yaml
+   39  kubectl get ns
+   40  kubectl get pv -n mysql-ns
+   41  cat pv.yaml
+   42  docker ps
+   43  docker exec -it kind-cluster-worker bash
+   44  ls
+   45  cat pvc.yaml
+   46  vim pv.yaml
+   47  cat pvc.yaml
+   48  ls
+   49  kubectl apply -f configmap.yaml -n mysql-ns
+   50  kubectl apply -f secret.yaml -n mysql-ns
+   51  kubectl apply -f pv.yaml
+   52  kubectl get pv
+   53  kubectl apply -f pvc.yaml -n mysql-ns
+   54  kubectl get pvc
+   55  kubectl get pvc -n mysql-ns
+   56  kubectl get pvc
+   57  kubectl get pv
+   58  cat deployment.yaml
+   59  ls
+   60  kubectl apply -f deployment.yaml -n mysql-ns
+   61  kubectl apply -f service.yaml -n mysql-ns
+   62  kubectl get pods -n mysql-ns
+   63  kubectl exec -it mysql-deployment-5989dfb8f-mnj9g -n mysql-ns --bash
+   64  kubectl exec -it mysql-deployment-5989dfb8f-mnj9g -n mysql-ns -- bash
+   65  docker ps
+   66  docker exec -it kind-cluster-worker bash
+   67  docker exec -it kind-cluster-worker2 bash
+   68  ls
+   69  vim deployment.yaml
+   70  kubectl apply -f deployment.yaml -n mysql-ns
+   71  kubectl get pod -n mysql-ns
+   72  kubectl exec -it mysql-deployment-5989dfb8f-pggr6 -n mysql-ns -- bash
+   73  vim deployment.yaml
+   74  kubectl apply -f deployment.yaml -n mysql-ns
+   75  kubectl get pod -n mysql-ns
+   76  kubectl exec -it mysql-deployment-5989dfb8f-mnj9g -n mysql-ns -- bash
+   77  ls
+   78  vim deployment.yaml
+   79  kubectl apply -f deployment.yaml -n mysql-ns
+   80  kubectl get pods -n mysql-ns
+   81  cat deployment.yaml
+   82  ls
+   83  docker ps
+   84  kubectl get nodes
+   85  cd DevOps-Challange/kubernetes/
+   86  ls
+   87  cd mysql/
+   88  ls
+   89  vim bankapp-deployment.yaml
+   90  cat configmap.yaml
+   91  vim bankapp-deployment.yaml
+   92  cat secret.yaml
+   93  vim bankapp-deployment.yaml
+   94  vim secret.yaml
+   95  vim bankapp-deployment.yaml
+   96  vim configmap.yaml
+   97  vim bankapp-deployment.yaml
+   98  vim configmap.yaml
+   99  ls
+  100  cat deployment.yaml
+  101  cat configmap.yaml
+  102  vim configmap.yaml
+  103  vim bankapp-deployment.yaml
+  104  cat configmap.yaml
+  105  vim bankapp-deployment.yaml
+  106  vim bankapp-svc.yaml
+  107  ls
+  108  cat bankapp-deployment.yaml
+  109  kubectl get all -n mysql-ns
+  110  kubectl apply -f bankapp-deployment.yaml -n mysql-ns
+  111  cat bankapp-deployment.yaml
+  112  cat configmap.yaml
+  113  vim bankapp-deployment.yaml
+  114  kubectl apply -f bankapp-deployment.yaml -n mysql-ns
+  115  kubectl get pods -n mysql-ns
+  116  kubectl apply -f bankapp-svc.yaml -n mysql-ns
+  117  kubectl get pods -n mysql-ns
+  118  kubectl logs bankapp-deployment-bf5f7b6-dp82r
+  119  kubectl logs bankapp-deployment-bf5f7b6-dp82r -n mysql-ns
+  120  kubectl describe pod bankapp-deployment-bf5f7b6-dp82r -n mysql-ns
+  121  cat configmap.yaml
+  122  cat <<EOF | kubectl apply -f -
+  123  apiVersion: v1
+  124  kind: ConfigMap
+  125  metadata:
+  126    name: mysql-configmap
+  127    namespace: mysql-ns
+  128    labels:
+  129      app: mysql
+  130  data:
+  131    MYSQL_DATABASE: "mysql-new-db"
+  132    SPRING_DATASOURCE_USERNAME: "root"
+  133    SPRING_DATASOURCE_URL: "jdbc:mysql://mysql-svc.mysql-ns.svc.cluster.local:3306/mysql-new-db"
+  134  EOF
+  135  kubectl describe configmap mysql-configmap -n mysql-ns
+  136  kubectl rollout restart deployment bankapp-deployment -n mysql-ns
+  137  kubectl get pods -n mysql-ns -w
+  138  kubectl get pods -n mysql-ns
+  139  kubectl describe pod bankapp-deployment-54b4cd44bd-dh2x4 -n mysql-ns
+  140  cat secret.yaml
+  141  cat <<EOF | kubectl apply -f -
+  142  apiVersion: v1
+  143  kind: Secret
+  144  metadata:
+  145    name: mysql-secret
+  146    namespace: mysql-ns
+  147  type: Opaque
+  148  data:
+  149    MYSQL_ROOT_PASSWORD: "cm9vdA==“
+  150    SPRING_DATASOURCE_PASSWORD: "cm9vdA==“
+  151  EOF
+  152  cat <<EOF | kubectl apply -f -
+  153  apiVersion: v1
+  154  kind: Secret
+  155  metadata:
+  156    name: mysql-secret
+  157    namespace: mysql-ns
+  158  type: Opaque
+  159  data:
+  160    MYSQL_ROOT_PASSWORD: "cm9vdA=="
+  161    SPRING_DATASOURCE_PASSWORD: "cm9vdA=="
+  162  EOF
+  163  kubectl describe secret mysql-secret -n mysql-ns
+  164  kubectl rollout restart deployment bankapp-deployment -n mysql-ns
+  165  kubectl get pods -n mysql-ns
+  166  kubectl get pods -n mysql-ns
+  167  kubectl get svc -n mysql-ns
+  168  kubectl port-forward --address 0.0.0.0 svc/bankapp-svc 8080:8080 -n mysql-ns
+  169  kubectl logs deployment/bankapp-deployment -n mysql-ns --tail=100
+  170  kubectl get pods -n mysql-ns
+  171  kubectl logs bankapp-deployment-687d86f788-7k9zg -n mysql-ns --tail=100
+  172  kubectl logs bankapp-deployment-687d86f788-7k9zg -n mysql-ns
+  173  kubectl port-forward --address 0.0.0.0 pod/bankapp-deployment-687d86f788-7k9zg 8080:8080 -n mysql-ns
+  174  vim bankapp-deployment.yaml
+  175  vim bankapp-svc.yaml
+  176  cat bankapp-svc.yaml
+  177  cat bankapp-deployment.yaml
+  178  vim bankapp-deployment.yaml
+  179  kubectl apply -f . -n mysql-ns
+  180  cat bankapp-deployment.yaml
+  181  kubectl delete deployment bankapp-deployment -n mysql-ns
+  182  kubectl apply -f . -n mysql-ns
+  183  kubectl get ep bankapp-svc -n mysql-ns
+  184  kubectl get ep mysql-svc -n mysql-ns
+  185  kubectl port-forward --address 0.0.0.0 svc/bankapp-svc 8080:8080 -n mysql-ns
+  186  kubectl get pods -n mysql-ns
+  187  kubectl exec -it mysql-deployment-5989dfb8f-7xgpq -n mysql-ns -- bash
+  188  history
+  189  history -all
+  190  history
+  191  history 200
+  192  ls
+  193  vim commands.txt
+  194  ls
+  195  cat commands.txt
+  196  ls
+  197  cd ..
+  198  ls
+  199  cp install.sh kind-config.yaml DevOps-Challange/kubernetes/
+  200  cd DevOps-Challange/kubernetes/
+  201  ls
+  202  cd ..
+  203  ls
+  204  cd DevOps-Challange/
+  205  git status
+  206  git add .
+  207  git status
+  208  git commit -m "adding complete bankapp with commands and configuration in mysql directory"
+  209  git push origin git
+  210  git branch
+  211  git checkout -b git
+  212  git branch
+  213  git push origin git
+  214  ls
+  215  cd DevOps-Challange/
+  216  ls
+  217  cd kubernetes/
+  218  ls
+  219  cd ..
+  220  rm -rf DevOps-Challange/
+  221  ls
+  222  git clone https://github.com/zeeshankanuga/DevOps-Challange.git
+  223  ls
+  224  cd DevOps-Challange/
+  225  s
+  226  cd kubernetes/
+  227  ls
+  228  cd bankapp-mysql/
+  229  ls
+  230  cat pv.yaml
+  231  cat pvc.yaml
+  232  cat deployment.yaml
+  233  minikube addons enable metrics-server
+  234  minikube status
+  235  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+  236  ls
+  237  sudo install minikube-linux-amd64 /usr/local/bin/minikube
+  238  minikube version
+  239  minikube addons enable metrics-server
+  240  minikube start
+  241  docker ps
+  242  minikube status
+  243  df -h
+  244  kubectl get nodes
+  245  kubectl get nodes -n mysql-ns
+  246  kubectl get pods
+  247  kubectl get pods -n mysql-ns
+  248  ls
+  249  minikube delete --purge --all
+  250  ls
+  251  docker ps
+  252  kubectl get nodes
+  253  kubectl get nodes -n mysql
+  254  kubectl get nodes -n mysql-ns
+  255  sudo rm /usr/local/bin/minikube
+  256  rm -rf ~/.kube ~/.minikube
+  257  kubectl config get-contexts
+  258  kubectl config current-context
+  259  kubectl config use-context kind-cluster
+  260  docker ps
+  261  kubectl config use-context kind-kind-cluster
+  262  kubectl config current-context
+  263  kubectl config get-contexts
+  264  kind export kubeconfig
+  265  kubectl config get-contexts
+  266  kind get clusters
+  267  kind export kubeconfig --name kind-cluster
+  268  kubectl config get-contexts
+  269  kubectl config use-context kind-kind-cluster
+  270  kubectl config get-contexts
+  271  kubectl get nodes
+  272  docker ps
+  273  kubectl get nodes
+  274  kubectl get pods -n mysql-ns
+  275  ls
+  276  rm minikube-linux-amd64
+  277  ls
+  278  kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+  279  ls
+  280  kubectl -n kube-system edit deployment metrics-server
+  281  kubectl -n kube-system rollout restart deployment metrics-server
+  282  kubectl get pods -n kube-system
+  283  kubectl top nodes
+  284  vim bankapp-hpa.yaml
+  285  cat bankapp-deployment.yaml
+  286  vim bankapp-hpa.yaml
+  287  kubectl apply -f bankapp-hpa.yaml -n mysql-ns
+  288  vim bankapp-hpa.yaml
+  289  kubectl apply -f bankapp-hpa.yaml -n mysql-ns
+  290  cat bankapp-hpa.yaml
+  291  vim bankapp-hpa.yaml
+  292  kubectl apply -f bankapp-hpa.yaml -n mysql-ns
+  293  vim bankapp-hpa.yaml
+  294  kubectl apply -f bankapp-hpa.yaml -n mysql-ns
+  295  kubectl get hpa -n mysql-ns
+  296  kubectl get top
+  297  kubectl top
+  298  kubectl top pods -n mysql-ns
+  299  kubectl port-forward --address 0.0.0.0 svc/bankapp-svc 8080:8080 -n mysql-ns
+  300  kubectl exec -it mysql-deployment-5989dfb8f-mnj9g -n mysql-ns -- bash
+  301  kubectl top pods
+  302  kubectl top pods -n mysql-ns
+  303  vim bankapp-hpa.yaml
+  304  kubectl apply -f bankapp-hpa.yaml -n mysql-ns
+  305  kubectl top pods -n mysql-ns
+  306  kubectl port-forward --address 0.0.0.0 svc/bankapp-svc 8080:8080 -n mysql-ns &
+  307  kubectl top pod -n mysql-ns
+  308  kubectl top pod -n mysql-ns -w
+  309  kubectl top pod -n mysql-ns
+  310  ls
+  311  cd DevOps-Challange/
+  312  cd kubernetes/
+  313  ;s
+  314  ls
+  315  cd bankapp-mysql/
+  316  ls
+  317  vim serviceaccount.yaml
+  318  vim role.yaml
+  319  ls
+  320  vim rolebinding.yaml
+  321  ls
+  322  kubectl apply -f serviceaccount.yaml -n mysql-ns
+  323  kubectl apply -f role -n mysql-ns
+  324  kubectl apply -f role.yaml -n mysql-ns
+  325  kubectl get serviceaccounts -n mysql-ns
+  326  kubectl get role -n mysql-ns
+  327  kubectl apply -f rolebinding.yaml -n mysql-ns
+  328  kubectl get sa,role,rolebinding -n mysql-ns
+  329  kubectl auth can-i list pods --as=system:serviceaccount:mysql-ns:bankapp-sa -n mysql-ns
+  330  kubectl get secrets -n mysql-ns --as=system:serviceaccount:mysql-ns:bankapp-sa
+  331  kubectl get pods -n mysql-ns --as=system:serviceaccount:mysql-ns:bankapp-sa
+  332  ls
+  333  cd ..
+  334  git status
+  335  git pull
+  336  git pull -b git
+  337  git pull --rebase origin git
+  338  git status
+  339  git add .
+  340  git status
+  341  git commit -m "adding HPA, RBAC- role, serviceaccount and role binding"
+  342  git push origin git
+  343  git btanch
+  344  git branch
+  345  git check out -b git
+  346  git checkout -b git
+  347  git branch
+  348  git push origin git
+  349  ls
+  350  curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4
+  351  ls
+  352  chmod 700 get_helm.sh
+  353  ls
+  354  ls -a
+  355  ls -all
+  356  ./get_helm.sh
+  357  ls
+  358  helm package .
+  359  cd /usr/local/bin/
+  360  ls
+  361  helm package .
+  362  ls
+  363  cd helm
+  364  helm install apache ./apache --namespace apache-namespace --create-namespace
+  365  cd /
+  366  ls
+  367  cd home/ubuntu/
+  368  ls
+  369  sudo apt-get install curl gpg apt-transport-https --yes
+  370  curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+  371  ls
+  372  echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+  373  sudo apt-get update
+  374  sudo apt-get install helm
+  375  helm version
+  376  helm -v
+  377  helm --v
+  378  helm
+  379  kubectk version
+  380  ls
+  381  helm version
+  382  helm repo list
+  383  helm repo add jenkins https://charts.jenkins.io
+  384  helm repo list
+  385  helm repo update
+  386  helm list
+  387  helm repo list
+  388  helm install jenkins-demo jenkins/jenkins --create-namespace
+  389  kubectl get pods
+  390  kubectl get svc
+  391  kubectl port-forward --address 0.0.0.0 svc/jenkins-demo 8080:8080
+  392  kubectl get pod
+  393  kubectl get pod -o wide
+  394  helm repo list
+  395  helm repo
+  396  helm list
+  397  helm repo list
+  398  kubectl get svc
+  399  kubectl get secrets
+  400  printf $(kubectl get secret jenkins-demo -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  401  kubectl port-forward --address 0.0.0.0 svc/jenkins-demo 8080:8080
+  402  helm list
+  403  helm repo list
+  404  docker ps
+  405  docker run zeeshankanuga/flask-app:latest
+  406  docker images
+  407  docker images -rm 9d5d1140bc5f
+  408  docker images rm 9d5d1140bc5f
+  409  docker rm image 9d5d1140bc5f
+  410  docker ps
+  411  docker images
+  412  docker rmi 9d5d1140bc5f
+  413  docker rm 5f752bd22581
+  414  docker rmi 9d5d1140bc5f
+  415  docker images
+  416  docker run zeeshankanuga/notepad:latest
+  417  docker ps
+  418  docker images
+  419  mkdir helm
+  420  ls
+  421  cd helm
+  422  helm create notepad-app
+  423  ls
+  424  cd notepad-app/
+  425  ls
+  426  cat Chart.yaml
+  427  ls
+  428  cd charts/
+  429  ls
+  430  cd ..
+  431  cat values.yaml
+  432  ls
+  433  cd templates/
+  434  ;s
+  435  ls
+  436  cd tests/
+  437  ls
+  438  cd ..
+  439  ls
+  440  vcat deployment.yaml
+  441  cat deployment.yaml
+  442  ls
+  443  cd ..
+  444  ls
+  445  vim values.yaml
+  446  vim values.yaml docker ps
+  447  docker images
+  448  vim values.yaml
+  449  cd ..
+  450  ls
+  451  cd notepad-app/
+  452  ls
+  453  cd ..
+  454  helm install notepad-deployment ./notepad-app/
+  455  kubectl get nodes
+  456  kubectl get pods
+  457  kubectl get svc
+  458  sudo -E kubectl port-forward svc/notepad-deployment-notepad-app --address 0.0.0.0 3000:3000
+  459  kubectl port-forward svc/notepad-deployment-notepad-app --address 0.0.0.0 3000:3000
+  460  ls
+  461  cd helm/
+  462  ls
+  463  helm list
+  464  kubectl get svc
+  465  kubectl get pods
+  466  docker images
+  467  kubectl port-forward --address 0.0.0.0 80:80 svc/flask-app
+  468  docker run zeeshankanuga/flask-multi-stage:latest
+  469  kubectl get pods
+  470  helm list
+  471  helm repo list
+  472  helm delete flask-app
+  473  helm list
+  474  history
