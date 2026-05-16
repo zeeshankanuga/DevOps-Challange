@@ -74,3 +74,18 @@ A DaemonSet is used when you need to run a container on every node in your clust
 For example, let's say we have an application that requires a logging agent to run on every node. We can use a DaemonSet YAML file like this:
 
 
+### Horizontal Pod Scaling
+Horizontal Pod Scaling is used when you need to scale your application based on demand. This is useful for applications that require more resources as the load
+increases, such as:
+
+* A web server
+* A database server
+
+For example, let's say we have a web server that requires 2 CPU cores and 4GB of RAM. We
+can use a Horizontal Pod Scaling YAML file like this to scale our application based on demand
+
+
+
+## Author
+
+Zeeshan Kanuga — Technical Architect
