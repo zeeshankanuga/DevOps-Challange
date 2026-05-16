@@ -84,7 +84,11 @@ increases, such as:
 For example, let's say we have a web server that requires 2 CPU cores and 4GB of RAM. We
 can use a Horizontal Pod Scaling YAML file like this to scale our application based on demand
 
+### RBAC
+Role-Based Access Control (RBAC) is used when you need to control access to your cluster resources. This is useful for applications that require fine-grained access control.
 
+### HELM
+Helm is a package manager which can help to deploy application. It helps to manage the deployment of multiple Kubernetes objects in a declarative way, making it easier to manage and update your applications.
 
 ## Author
 
