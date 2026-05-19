@@ -90,6 +90,70 @@ Role-Based Access Control (RBAC) is used when you need to control access to your
 ### HELM
 Helm is a package manager which can help to deploy application. It helps to manage the deployment of multiple Kubernetes objects in a declarative way, making it easier to manage and update your applications.
 
+
+### ISTIO
+
+Istio is an open-source service mesh platform that allows you to manage traffic, security, and observability across microservices. Here's how it works with Kubernetes:
+
+* **Sidecar Pattern**: Istio uses a sidecar pattern where each application has a companion container (the "sidecar") that manages the traffic and communication between the application and other services.
+* **Service Mesh**: The service mesh is a layer of abstraction between the application and the underlying infrastructure. It provides a standardized way to manage traffic, security, and observability across microservices.
+
+To deploy Istio with Kubernetes, you need to create several YAML files:
+
+### istio-config.yaml
+apiVersion: install.istio.io/v1beta1
+kind: IstioConfiguration
+metadata:
+  name: sample-istioconfig
+spec:
+  clusterName: kubernetes
+  istioNamespace: istio-system
+
+---
+### gateway.yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: sample-gateway
+spec:
+  selector:
+    istio: ingressgateway # use the istio default ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+
+---
+### virtual-service.yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: sample-virtualservice
+spec:
+  hosts:
+  - "sample.com"
+  http:
+  - match:
+      uri:
+        prefix: "/"
+    rewrite:
+      uri: "/new-path"
+---
+### destination-rule.yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: sample-destinationrule
+spec:
+  host: sample.com
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+
+
 ## Author
 
 Zeeshan Kanuga — Technical Architect
