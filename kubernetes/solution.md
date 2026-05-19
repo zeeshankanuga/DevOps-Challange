@@ -101,6 +101,7 @@ Istio is an open-source service mesh platform that allows you to manage traffic,
 To deploy Istio with Kubernetes, you need to create several YAML files:
 
 ### istio-config.yaml
+```
 apiVersion: install.istio.io/v1beta1
 kind: IstioConfiguration
 metadata:
@@ -108,9 +109,10 @@ metadata:
 spec:
   clusterName: kubernetes
   istioNamespace: istio-system
-
+```
 ---
 ### gateway.yaml
+```
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
@@ -125,9 +127,10 @@ spec:
       protocol: HTTP
     hosts:
     - "*"
-
+```
 ---
 ### virtual-service.yaml
+```
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
@@ -141,8 +144,10 @@ spec:
         prefix: "/"
     rewrite:
       uri: "/new-path"
+```
 ---
 ### destination-rule.yaml
+```
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
@@ -152,7 +157,7 @@ spec:
   trafficPolicy:
     tls:
       mode: ISTIO_MUTUAL
-
+```
 
 ## Author
 
