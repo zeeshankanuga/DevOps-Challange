@@ -7,3 +7,6 @@ brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 
 Run `terraform init` in system to initialize terraform inside directory 
+
+
+Working on `terraform.tf` `provider.tf` `ec2.tf`
